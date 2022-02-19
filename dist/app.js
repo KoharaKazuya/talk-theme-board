@@ -68,7 +68,7 @@ export default class App {
     }
 
     // binary search
-    let min = 0.2,
+    let min = 1.2,
       max = 5;
     while (max - min > 0.1) {
       const middle = (min + max) / 2;

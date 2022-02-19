@@ -9,12 +9,19 @@ window.__TAURI__.globalShortcut.register("Cmd+Shift+j", () => {
   app.next();
 });
 
+window.__TAURI__.globalShortcut.register("Cmd+Shift+o", async () => {
+  const content = await window.__TAURI__.clipboard.readText();
+
+  const themes = await window.__TAURI__.invoke("load_text", { content });
+  app.start(themes);
+});
+
 window.__TAURI__.event.listen("tauri://file-drop", async (event) => {
   const paths = event.payload;
   if (!(Array.isArray(paths) && paths.length > 0)) return;
   const path = paths[0];
 
-  const themes = await window.__TAURI__.invoke("load", { path });
+  const themes = await window.__TAURI__.invoke("load_file", { path });
   app.start(themes);
 });
 

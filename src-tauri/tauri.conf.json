@@ -51,6 +51,9 @@
       "active": false
     },
     "allowlist": {
+      "clipboard": {
+        "readText": true
+      },
       "globalShortcut": {
         "all": true
       },

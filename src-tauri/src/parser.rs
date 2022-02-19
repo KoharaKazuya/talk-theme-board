@@ -2,7 +2,13 @@ use pulldown_cmark::{html, Parser};
 use std::{fs::File, io::prelude::*, io::Cursor};
 
 #[tauri::command]
-pub async fn load(path: String) -> Result<Vec<Vec<String>>, String> {
+pub async fn load_text(content: String) -> Result<Vec<Vec<String>>, String> {
+    let themes = parse(&content).map_err(|e| format!("failed to parse: {}", e))?;
+    Ok(themes)
+}
+
+#[tauri::command]
+pub async fn load_file(path: String) -> Result<Vec<Vec<String>>, String> {
     let md = read_file(path).map_err(|e| format!("failed to read file: {}", e))?;
     let themes = parse(&md).map_err(|e| format!("failed to parse: {}", e))?;
     Ok(themes)

@@ -5,7 +5,7 @@
 
 mod parser;
 
-use crate::parser::load;
+use crate::parser::{load_file, load_text};
 use tauri::{Menu, MenuItem, Submenu};
 
 fn main() {
@@ -16,7 +16,7 @@ fn main() {
 
   tauri::Builder::default()
     .menu(menu)
-    .invoke_handler(tauri::generate_handler![load])
+    .invoke_handler(tauri::generate_handler![load_text, load_file])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }

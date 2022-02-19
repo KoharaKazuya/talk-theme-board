@@ -33,7 +33,10 @@ body,
   color: #666;
   display: flex;
   align-items: center;
-  gap: 1em;
+  white-space: nowrap;
+  flex-wrap: wrap;
+  gap: 0 1em;
+  margin-bottom: 1em;
 }
 
 .next {
