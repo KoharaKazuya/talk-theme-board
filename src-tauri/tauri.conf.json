@@ -54,6 +54,9 @@
       "clipboard": {
         "readText": true
       },
+      "dialog": {
+        "message": true
+      },
       "globalShortcut": {
         "all": true
       },
